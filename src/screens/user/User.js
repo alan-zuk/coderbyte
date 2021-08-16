@@ -8,10 +8,13 @@ import {
   makeStyles,
   Typography,
 } from "@material-ui/core";
-import { useEffect, useState } from "react";
-import { useHistory, useLocation } from "react-router-dom";
+import { useState } from "react";
+import { useLocation } from "react-router-dom";
 
 const useStyles = makeStyles(() => ({
+  container: {
+    marginTop: '3rem'
+  },
   title: {
     fontWeight: "bold",
     display: "block",
@@ -24,15 +27,11 @@ const useStyles = makeStyles(() => ({
 
 export const User = () => {
   const classes = useStyles();
-  const [user,setUser] = useState({});
   const location = useLocation();
-
-  useEffect(() => {
-    setUser(location.state.user);
-  },[])
+  const [user] = useState(location.state.user ?? {});
 
   return (
-    <Grid>
+    <Grid className={classes.container}>
       <ListItem alignItems="flex-start">
         <ListItemAvatar>
           <Avatar alt="UserAvatar" src={user.avatar_url} />

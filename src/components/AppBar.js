@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { AppBar as Bar, Grid, Toolbar, Typography } from "@material-ui/core";
-import { useHistory, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { BackButton } from "./BackButton";
 
 export const AppBar = () => {
@@ -9,7 +9,7 @@ export const AppBar = () => {
   const location = useLocation();
 
   useEffect(() => {
-    if (location.pathname == "/details") {
+    if (location.pathname === "/details") {
       setTitle("User")
     }
     else {

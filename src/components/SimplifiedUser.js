@@ -1,7 +1,20 @@
-import { Button, Grid, Typography } from "@material-ui/core"
+import { Button, Grid, makeStyles } from "@material-ui/core"
 import { useHistory } from "react-router-dom"
 
-export const SimplifiedUser = ({user}) => {
+const useStyles = makeStyles(() => ({
+  userCard: {
+    backgroundColor: '#028090',
+    color: "white",
+    height: '100%',
+    '&:hover': {
+      backgroundColor: 'white',
+      color: '#028090',
+    },
+  }
+}));
+
+export const SimplifiedUser = ({ user }) => {
+  const classes = useStyles();
   const history = useHistory();
 
   const viewDetails = () => {
@@ -11,8 +24,8 @@ export const SimplifiedUser = ({user}) => {
     }
     history.push(location)
   }
-  
-  return <Grid item xs={2}>
-   <Button variant="outlined" onClick={() => viewDetails()} style={{backgroundColor: '#028090', color:"white"}}>{user.name}</Button>
+
+  return <Grid item xs={12} md={2}>
+    <Button variant="outlined" onClick={() => viewDetails()} className={classes.userCard}>{user.name}</Button>
   </Grid>
 }
